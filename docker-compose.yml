@@ -1,0 +1,55 @@
+# 本机同时跑「青龙」与「白虎」两个面板，用于验证脚本在两端的行为。
+# 用法：docker compose up -d
+# 青龙面板：http://localhost:5700   白虎面板：http://localhost:8052
+#
+# 注意：两者镜像不同、数据目录不同，互不干扰。
+# 若只想用其中一个，把不需要的服务删掉或注释掉即可。
+
+services:
+  # ---------------- 青龙面板 ----------------
+  qinglong:
+    image: whyour/qinglong:latest
+    container_name: qinglong
+    restart: unless-stopped
+    ports:
+      - "5700:5700"
+    environment:
+      - TZ=Asia/Shanghai
+      # 面板通知渠道（按需填写，脚本会调用容器内自带的通知脚本群发）
+      # - PUSH_KEY=
+      # - BARK_PUSH=
+      # - TG_BOT_TOKEN=
+      # - TG_USER_ID=
+      # - WEBHOOK_URL=
+    volumes:
+      - ./data/qinglong:/ql/data
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ---------------- 白虎面板 ----------------
+  baihu:
+    image: ghcr.io/engigu/baihu:latest
+    container_name: baihu
+    restart: unless-stopped
+    ports:
+      - "8052:8052"
+    environment:
+      - TZ=Asia/Shanghai
+      - BH_SERVER_PORT=8052
+      - BH_SERVER_HOST=0.0.0.0
+      - BH_DB_TYPE=sqlite
+      - BH_DB_PATH=/app/data/baihu.db
+      - BH_DB_TABLE_PREFIX=baihu_
+      # 机密（Secret）加密密钥，务必改成自己的随机串，且保持稳定
+      - BAIHU_SECRET_KEY=change_this_to_a_random_secret
+    volumes:
+      - ./data/baihu:/app/data
+      - ./data/baihu-envs:/app/envs
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

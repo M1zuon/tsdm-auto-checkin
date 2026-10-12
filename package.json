@@ -1,0 +1,22 @@
+{
+  "name": "tsdm-auto-checkin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "天使动漫论坛自动签到与打工脚本，支持青龙面板与白虎面板",
+  "keywords": ["tsdm", "天使动漫", "签到", "打卡", "青龙面板", "白虎面板"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "probe": "node tsdm_checkin.js --probe",
+    "checkin": "node tsdm_checkin.js",
+    "work": "node tsdm_work.js"
+  },
+  "files": [
+    "tsdm_checkin.js",
+    "tsdm_work.js",
+    "lib/"
+  ]
+}

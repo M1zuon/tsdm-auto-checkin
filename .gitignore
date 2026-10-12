@@ -1,0 +1,22 @@
+# 真实配置，含 Cookie 凭据，绝不入库
+config.env
+.env
+*.local.env
+
+# 面板数据目录（docker-compose 用）
+data/
+
+# 原始抓包记录：含真实 auth / cf_clearance，只在本机留存
+278_Full.txt
+*_Full.txt
+capture*.txt
+
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
