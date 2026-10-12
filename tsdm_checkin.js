@@ -1,3 +1,9 @@
+/*
+ * new Env('TSDM天使动漫签到')
+ * name: "TSDM天使动漫签到"
+ * cron: "10 1 * * *"
+ */
+
 'use strict';
 
 const { runTask, runCheckin } = require('./lib/tsdm.js');

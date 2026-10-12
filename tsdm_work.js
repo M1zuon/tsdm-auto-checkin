@@ -1,3 +1,9 @@
+/*
+ * new Env('TSDM天使动漫打工')
+ * name: "TSDM天使动漫打工"
+ * cron: "6 0,7,14,21 * * *"
+ */
+
 'use strict';
 
 const { runWork } = require('./lib/tsdm.js');
