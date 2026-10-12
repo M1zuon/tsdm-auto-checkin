@@ -1,7 +1,7 @@
 /*
  * new Env('TSDM天使动漫打工')
  * name: "TSDM天使动漫打工"
- * cron: "6 0,7,14,21 * * *"
+ * cron: "8 3,9,15,21 * * *"
  */
 
 'use strict';

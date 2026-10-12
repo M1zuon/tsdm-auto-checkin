@@ -1,7 +1,7 @@
 /*
  * new Env('TSDM天使动漫签到')
  * name: "TSDM天使动漫签到"
- * cron: "10 1 * * *"
+ * cron: "10 5 * * *"
  */
 
 'use strict';

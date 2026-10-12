@@ -44,10 +44,10 @@ TSDM_COOKIE='<整行 Cookie>' node tsdm_work.js
 
    | 任务名 | 命令 | 定时 |
    |---|---|---|
-   | TSDM 签到 | `task tsdm/tsdm_checkin.js` | `10 1 * * *` |
-   | TSDM 打工 | `task tsdm/tsdm_work.js` | `6 0,7,14,21 * * *` |
+   | TSDM 签到 | `task tsdm/tsdm_checkin.js` | `10 5 * * *` |
+   | TSDM 打工 | `task tsdm/tsdm_work.js` | `8 3,9,15,21 * * *` |
 
-   签到时段为 01:00–23:59，故放在 01:10。打工的冷却按「上次领取成功」起算，**cron 间隔必须大于冷却时长**，否则每次触发都会差几十秒而白跑；7 小时间隔（00:06 / 07:06 / 14:06 / 21:06）可保证每次触发都在冷却之后。
+   打工的冷却按「上次领取成功」起算，**cron 间隔必须大于冷却时长**，否则每次触发都会差几十秒而白跑。
 
    用仓库订阅时，白名单填 `tsdm_checkin|tsdm_work`，**依赖必须填 `lib`**，否则 `lib/` 会被过滤掉。
 
